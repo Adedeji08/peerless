@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Search, LogOut, ChevronDown, Info, Home } from "lucide-react";
+import { ChevronDown, Info, Home } from "lucide-react";
 import Sidebar from "../../components/laypout/sidebar";
 import Navebar from "../../components/laypout/navbar";
 import { Link } from "react-router-dom";
@@ -7,7 +7,7 @@ import Icon from "../../assets/icon";
 
 export default function Details() {
   const [activeTab, setActiveTab] = useState("Tampa (FL)");
-
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const timelineItems = [
     { id: 1, label: "1 week ago" },
     { id: 2, label: "1 month ago" },
@@ -16,10 +16,14 @@ export default function Details() {
     { id: 5, label: "2 months ago" },
   ];
 
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
+
   return (
     <div className="flex h-screen bg-gray-50 text-gray-800">
       {/* Sidebar */}
-      <Sidebar />
+      <Sidebar toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} />
 
       <div className="md:hidden fixed bottom-4 left-4 z-50">
         <button className="bg-black text-white p-4 rounded-full shadow-lg">
@@ -30,7 +34,7 @@ export default function Details() {
       {/* Main Content */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Header */}
-        <Navebar />
+        <Navebar toggleSidebar={toggleSidebar} />
 
         {/* Content */}
         <main className="flex-1 overflow-y-auto p-6">
@@ -47,12 +51,15 @@ export default function Details() {
                 <Icon name="homeIcon2" /> Orlando
               </span>
               <span>›</span>
-              <span className="flex gap-1">  <Icon name='homeIcon3'/> New Murabella Financing</span>
+              <span className="flex gap-1">
+                {" "}
+                <Icon name="homeIcon3" /> New Murabella Financing
+              </span>
             </div>
           </Link>
 
           {/* Timeline */}
-          <div className="flex justify-between mt-8 relative w-[60%] mx-auto ">
+          <div className="flex justify-between mt-8 relative lg:w-[60%] mx-auto ">
             {timelineItems.map((item, index) => (
               <div key={item.id} className="flex flex-col items-center">
                 <div
@@ -90,7 +97,7 @@ export default function Details() {
           </div>
 
           {/* Form Area */}
-          <div className="bg-white p-6 rounded-md w-[75%] mx-auto shadow-sm mt-8">
+          <div className="bg-white p-6 rounded-md lg:w-[75%] mx-auto shadow-sm mt-8">
             {/* Tabs */}
             <div className="flex space-x-4 mb-6">
               <label className="flex items-center">
