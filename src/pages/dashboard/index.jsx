@@ -79,9 +79,7 @@ export default function Dashboard() {
   };
 
   const handleJobClick = (jobId) => {
-    // Navigate to details page when a job card is clicked
-    // You can also pass the job ID as a parameter if needed
-    navigate('/details');
+    navigate("/details");
   };
 
   return (

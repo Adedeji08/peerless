@@ -44,11 +44,11 @@ function Sidebar({ toggleSidebar, sidebarOpen }) {
         </div>
 
         {/* Navigation */}
-        <div className="flex-1 overflow-y-auto mt-9">
+        <div className="flex-1 overflow-y-auto mt-9 mx-3 rounded-xl">
           {navItems.map((item) => (
             <div
               key={item.id}
-              className={`flex items-center p-4 hover:bg-gray-800 cursor-pointer ${
+              className={`flex items-center p-4 rounded-xl hover:bg-gray-800 cursor-pointer ${
                 item.id === 1 ? "bg-[#A93636]" : ""
               }`}
             >
